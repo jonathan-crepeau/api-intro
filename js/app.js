@@ -60,15 +60,63 @@
 // ANCHOR - visualcrossing.com Timeline Weather API
 
 // SECTION Successful GET Request
-$.ajax({
-    method: "GET",
-    url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/94960?key=3D6EZXHLSVULQWKNPQNZGMSNW",
-    async: true,
-    dataType: 'json',
-    success: function(response){
-        console.log(response);
-    },
-    error: function(error){
-        console.log(error);
-    },
-});
+// $.ajax({
+//     method: "GET",
+//     url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/94960?key=3D6EZXHLSVULQWKNPQNZGMSNW",
+//     async: true,
+//     dataType: 'json',
+//     success: function(response){
+//         console.log(response);
+//     },
+//     error: function(error){
+//         console.log(error);
+//     },
+// });
+
+
+// SECTION AJAX call within Promise object
+// let testArray = [];
+
+// const forecastPromise = new Promise(function(resolve, reject) {
+//     $.ajax({
+//         method: "GET",
+//         url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/94960?key=3D6EZXHLSVULQWKNPQNZGMSNW",
+//         async: true,
+//         dataType: 'json',
+//         success: function(response) {
+//             resolve(response);
+//         },
+//         error: function(error) {
+//             reject(error);
+//         },
+//     })
+// })
+
+// forecastPromise
+//     .then((response) => testArray.push(response))
+//     .catch((error) => console.log(`Error: ${error}`));
+
+
+// const forecastPromise = new Promise(function(resolve, reject) {
+//     $.ajax({
+//         method: "GET",
+//         url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/94960?key=3D6EZXHLSVULQWKNPQNZGMSNW",
+//         async: true,
+//         dataType: 'json',
+//         success: function(response){
+//             // console.log(response);
+//             console.log('Request is success.')
+//         },
+//         error: function(error){
+//             console.log(error);
+//         },
+//     });
+// });
+
+// forecastPromise
+//     .then((response) => testVariable = response);
+
+//     console.log(testVariable);
+
+
+
