@@ -41,57 +41,7 @@
 // });
 
 
-// SECTION Example 2: Logging name of Pokemon from HTTP GET Request via callback function:
-let pokemonNames = [];
-
-function makeGetRequest(method, callback){
-    $.ajax({
-        method: `${method}`,
-        url: "https://pokeapi.co/api/v2/pokemon/77",
-        success: function(result){
-            callback(result.name);
-        }
-    })
-}
-
-function getPokemonName(input){
-    console.log(input);
-}
-
-makeGetRequest("GET", getPokemonName);
-
-
-// ANCHOR Completing an XMLHttpRequest
-
-// SECTION Example 1: Completing An HTTP Request w/ XMLHttpRequest object:
-// document.querySelector('#ajax-button').addEventListener('click', makeRequest);
-
-
-// let httpRequest;    
-// function makeRequest() {
-//     // NOTE - calling a new XMLHttpRequest object:
-//     httpRequest = new XMLHttpRequest();
-//     if (!httpRequest) {
-//         console.log('Giving Up: Cannot create an XMLHTTP instance.')
-//         return false;
-//     }
-//     // NOTE - Set what function to call upon state change:
-//     httpRequest.onreadystatechange = alertContents;
-//     httpRequest.open("GET", "https://pokeapi.co/api/v2/pokemon/77/");
-//     httpRequest.send();
-// }
-
-// function alertContents() {
-//     if (httpRequest.readyState === XMLHttpRequest.DONE) {
-//         if (httpRequest.status === 200) {
-//             // NOTE - In the first try, I didn't parse the return as JSON my returned server response was a string of text. Notice that AJAX, which is a jQuery core method, has a different syntax (JSON.parse()) than its parallel in the Fetch API ((response) => response.json()):
-//             const response = JSON.parse(httpRequest.responseText);
-//             console.log(response);
-//         } else {
-//             alert("Problem with request, status is something other than 200.");
-//         }
-//     }
-// }
+// SECTION Refresher For Example 2(below), "callback hell":
 
 // function addOne(init, callback) {
 //     const result = init + 1;
@@ -119,3 +69,60 @@ makeGetRequest("GET", getPokemonName);
 // }
 
 // performOperation();
+
+
+// SECTION Example 2: Logging name of Pokemon from HTTP GET Request via callback function:
+// let pokemonNames = [];
+
+// function makeGetRequest(method, callback){
+//     $.ajax({
+//         method: `${method}`,
+//         url: "https://pokeapi.co/api/v2/pokemon/77",
+//         success: function(result){
+//             callback(result.name);
+//         }
+//     })
+// }
+
+// function getPokemonName(input){
+//     console.log(input);
+// }
+
+// makeGetRequest("GET", getPokemonName);
+
+
+// ANCHOR Completing an XMLHttpRequest
+
+// SECTION Example 1: Completing An HTTP Request w/ XMLHttpRequest object:
+
+document.querySelector('#ajax-button').addEventListener('click', makeRequest);
+
+let httpRequest;    
+function makeRequest() {
+    // NOTE - calling a new XMLHttpRequest object:
+    httpRequest = new XMLHttpRequest();
+    if (!httpRequest) {
+        console.log('Giving Up: Cannot create an XMLHTTP instance.')
+        return false;
+    }
+    // NOTE - Set what function to call upon state change:
+    httpRequest.onreadystatechange = alertContents;
+    httpRequest.open("GET", "https://pokeapi.co/api/v2/pokemon/77/");
+    httpRequest.send();
+}
+
+function alertContents() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+            // NOTE - In the first try, I didn't parse the return as JSON my returned server response was a string of text. Notice that AJAX, which is a jQuery core method, has a different syntax (JSON.parse()) than its parallel in the Fetch API ((response) => response.json()):
+            
+            // let response = httpRequest.responseText;
+            const response = JSON.parse(httpRequest.responseText);
+            console.log(response);
+        } else {
+            alert("Problem with request, status is something other than 200.");
+        }
+    }
+}
+
+
